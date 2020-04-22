@@ -4,19 +4,11 @@
 
 For Linux users, the default Linux are quite old on their repo. Please follow these instructions below to install the latest _cmake_ on your Linux.
 
-If you search for cmake on the Ubuntu repo `apt-cache search cmake` you will find this:
-
-```
-cmake/xenial-updates,now 3.5.1-1ubuntu3 amd64 [installed]
-  cross-platform, open-source make system
-```
-Version 3.5.1 is quite old.
-
-- Step 1: Obtain the latest cmake sh file
+**Step 1: Obtain the latest cmake sh file**
 
 Go to `https://cmake.org/` and download the Linux version shell script. The `*.sh` file. After that you may rename it as `cmake.sh`.
 
-- Step 2: Installation
+**Step 2: Installation**
 
 Note that Linux tells us that packages that are not managed by the system should be installed in the `/usr/local` directory.
 
@@ -25,6 +17,16 @@ Therefore,
 `sudo bash cmake.sh --prefix=/usr/local --exclude-subdir`
 
 Note that `--exclude-subdir` command will put `bin`, `man`, `doc` and `share` in the `/usr/local` as we want.
+
+**Others**
+
+If you search for cmake on the Ubuntu repo `apt-cache search cmake` you will find this:
+
+```
+cmake/xenial-updates,now 3.5.1-1ubuntu3 amd64 [installed]
+  cross-platform, open-source make system
+```
+Version 3.5.1 is quite old.
 
 ## Details for CMakeLists.txt
 ```cmake
