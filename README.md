@@ -28,6 +28,23 @@ cmake/xenial-updates,now 3.5.1-1ubuntu3 amd64 [installed]
 ```
 Version 3.5.1 is quite old.
 
+If cmake has conflict on your system, causing Ubuntu not to know which cmake to use. Please follow the instructions below to setup your cmake properly.
+
+```bash
+# Do this only after installation
+# Remove any cmake set before
+sudo update-alternatives --remove-all cmake
+
+# Set the current cmake as the default cmake
+sudo update-alternatives --install /usr/bin/cmake cmake /usr/local/bin/cmake 80
+
+# Choose you cmake, if you have already remove all just now you will only have one cmake
+sudo update-alternatives --config cmake
+
+# Check your cmake version
+cmake --version
+```
+
 ## Details for CMakeLists.txt
 ```cmake
 # Set cmake minimum require
