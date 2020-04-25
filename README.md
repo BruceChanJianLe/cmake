@@ -6,7 +6,7 @@ For Linux users, the default Linux are quite old on their repo. Please follow th
 
 **Step 1: Obtain the latest cmake sh file**
 
-Go to `https://cmake.org/` and download the Linux version shell script. The `*.sh` file. After that you may rename it as `cmake.sh`.
+Go to `https://cmake.org/` [downlaod_link](https://cmake.org/download/) and download the Linux version shell script. The `*.sh` file. After that you may rename it as `cmake.sh`.
 
 **Step 2: Installation**
 
