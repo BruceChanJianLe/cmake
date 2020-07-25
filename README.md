@@ -74,6 +74,24 @@ target_link_libraries(${PROJECT_NAME} ${CURSES_LIBRARIES})
 
 Run `cmake --help-module-list` to list all the packages that it can find.
 
+### Adding Warnings in CMake
+
+```cmake
+if(MSVC)
+  target_compile_options(${TARGET_NAME} PRIVATE /W4 /WX)
+else()
+  target_compile_options(${TARGET_NAME} PRIVATE -Wall -Wextra -pedantic -Werror)
+endif()
+
+# OR
+
+target_compile_options(${TARGET_NAME} PRIVATE
+  $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX>
+  $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -pedantic -Werror>
+)
+```
+
 ## References
  - Installation (from cmake good) [link](https://www.youtube.com/watch?v=_yFPO1ofyF0&list=PLK6MXr8gasrGmIiSuVQXpfFuE1uPT615s)
- - Cmake features (from CMake for dummies) [link1](https://cmake.org/cmake/help/v3.1/prop_gbl/CMAKE_CXX_KNOWN_FEATURES.html#prop_gbl:CMAKE_CXX_KNOWN_FEATURES) [link2](https://www.youtube.com/watch?v=7W4Q-XLnMaA)  
+ - CMake features (from CMake for dummies) [link1](https://cmake.org/cmake/help/v3.1/prop_gbl/CMAKE_CXX_KNOWN_FEATURES.html#prop_gbl:CMAKE_CXX_KNOWN_FEATURES) [link2](https://www.youtube.com/watch?v=7W4Q-XLnMaA)  
+- Adding Warnings in CMake [link1](https://cmake.org/cmake/help/latest/command/add_compile_options.html) [link2](https://stackoverflow.com/questions/2368811/how-to-set-warning-level-in-cmake/3818084)
