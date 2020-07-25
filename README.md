@@ -91,6 +91,21 @@ target_compile_options(${TARGET_NAME} PRIVATE
 )
 ```
 
+### Adding Compile Definitions
+
+```cmake
+# Taken from https://github.com/BruceChanJianLe/ros-class-node/blob/master/CMakeLists.txt
+# node_class_debug executable
+add_executable(node_class_debug
+               src/main.cpp
+               src/node_class.cpp
+               )
+
+target_compile_definitions(node_class_debug PRIVATE DEBUG_)
+
+target_link_libraries(node_class_debug ${catkin_LIBRARIES} ${CURSES_LIBRARIES})
+```
+
 ## References
  - Installation (from cmake good) [link](https://www.youtube.com/watch?v=_yFPO1ofyF0&list=PLK6MXr8gasrGmIiSuVQXpfFuE1uPT615s)
  - CMake features (from CMake for dummies) [link1](https://cmake.org/cmake/help/v3.1/prop_gbl/CMAKE_CXX_KNOWN_FEATURES.html#prop_gbl:CMAKE_CXX_KNOWN_FEATURES) [link2](https://www.youtube.com/watch?v=7W4Q-XLnMaA)  
