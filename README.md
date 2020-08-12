@@ -1,5 +1,13 @@
 # CMAKE
 
+## Table of Contents
+1. [Installation on Linux](##Installation\ on\ Linux)
+1. [Details for CMakeLists.txt](##Details\ for\ CMakeLists\.txt)
+1. [Finding packages](###Finding\ packages)
+1. [Adding Warnings in CMake](###Adding\ Warnings\ in\ CMake)
+1. [Adding Compile Definitions](###Adding\ Compile\ Definitions)
+1. []()
+
 ## Installation on Linux
 
 For Linux users, the default Linux are quite old on their repo. Please follow these instructions below to install the latest _cmake_ on your Linux.
@@ -106,7 +114,19 @@ target_compile_definitions(node_class_debug PRIVATE DEBUG_)
 target_link_libraries(node_class_debug ${catkin_LIBRARIES} ${CURSES_LIBRARIES})
 ```
 
+### Display All Available CMake Variables
+
+```cmake
+    message(STATUS "print_all_variables------------------------------------------{")
+    get_cmake_property(_variableNames VARIABLES)
+    foreach (_variableName ${_variableNames})
+        message(STATUS "${_variableName}=${${_variableName}}")
+    endforeach()
+    message(STATUS "print_all_variables------------------------------------------}")
+```
+
 ## References
  - Installation (from cmake good) [link](https://www.youtube.com/watch?v=_yFPO1ofyF0&list=PLK6MXr8gasrGmIiSuVQXpfFuE1uPT615s)
  - CMake features (from CMake for dummies) [link1](https://cmake.org/cmake/help/v3.1/prop_gbl/CMAKE_CXX_KNOWN_FEATURES.html#prop_gbl:CMAKE_CXX_KNOWN_FEATURES) [link2](https://www.youtube.com/watch?v=7W4Q-XLnMaA)  
-- Adding Warnings in CMake [link1](https://cmake.org/cmake/help/latest/command/add_compile_options.html) [link2](https://stackoverflow.com/questions/2368811/how-to-set-warning-level-in-cmake/3818084)
+ - Adding Warnings in CMake [link1](https://cmake.org/cmake/help/latest/command/add_compile_options.html) [link2](https://stackoverflow.com/questions/2368811/how-to-set-warning-level-in-cmake/3818084)
+ - All Available CMake Variables [link1](https://stackoverflow.com/questions/9298278/cmake-print-out-all-accessible-variables-in-a-script/9328525#9328525) [link2](https://stackoverflow.com/questions/31343813/displaying-cmake-variables)
