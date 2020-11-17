@@ -84,18 +84,50 @@ Run `cmake --help-module-list` to list all the packages that it can find.
 
 ### Adding Warnings in CMake
 
+Note to add the `target_compile_options` after the target is build. e.g. after `add_executable`.   
+
+**Method 1:**  
 ```cmake
 if(MSVC)
   target_compile_options(${TARGET_NAME} PRIVATE /W4 /WX)
 else()
   target_compile_options(${TARGET_NAME} PRIVATE -Wall -Wextra -pedantic -Werror)
 endif()
+```
 
-# OR
-
+**Method 2:**  
+```cmake
 target_compile_options(${TARGET_NAME} PRIVATE
   $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX>
   $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -pedantic -Werror>
+)
+```
+
+**Method 3:**
+```cmake
+target_compile_options(line_node
+  PRIVATE
+    $<$<CXX_COMPILER_ID:Gnu>:
+    # g++ warning flags
+    -Wall
+    -Wextra
+    -Wpedantic
+    -Werror
+    >
+
+    $<$<CXX_COMPILER_ID:Clang>:
+    # clang warning flags
+    -Wall
+    -Wextra
+    -Wpedantic
+    -Werror
+    >
+
+    $<$<CXX_COMPILER_ID:MSVC>:
+      # MSVC warning flags
+      /W4
+      /WX
+    >
 )
 ```
 
