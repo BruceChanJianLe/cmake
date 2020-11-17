@@ -1,12 +1,12 @@
 # CMAKE
 
 ## Table of Contents
-1. [Installation on Linux](##Installation\ on\ Linux)
-1. [Details for CMakeLists.txt](##Details\ for\ CMakeLists\.txt)
-1. [Finding packages](###Finding\ packages)
-1. [Adding Warnings in CMake](###Adding\ Warnings\ in\ CMake)
-1. [Adding Compile Definitions](###Adding\ Compile\ Definitions)
-1. [Display All Available CMake Variables](###Display\ All\ Available\ CMake\ Variables)
+1. [Installation on Linux](#Installation-on-Linux)
+1. [Details for CMakeLists.txt](#Details-for-CMakeLists-txt)
+1. [Finding packages](#Finding-packages)
+1. [Adding Warnings in CMake](#Adding-Warnings-in-CMake)
+1. [Adding Compile Definitions](#Adding-Compile-Definitions)
+1. [Display All Available CMake Variables](#Display-All-Available-CMake-Variables)
 
 ## Installation on Linux
 
