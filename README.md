@@ -7,6 +7,7 @@
 1. [Adding Warnings in CMake](#Adding-Warnings-in-CMake)
 1. [Adding Compile Definitions](#Adding-Compile-Definitions)
 1. [Display All Available CMake Variables](#Display-All-Available-CMake-Variables)
+1. [Adding Compile Flag](#Adding-Compile-Flag)
 
 ## Installation on Linux
 
@@ -157,8 +158,14 @@ target_link_libraries(node_class_debug ${catkin_LIBRARIES} ${CURSES_LIBRARIES})
     message(STATUS "print_all_variables------------------------------------------}")
 ```
 
+
+### Adding Compile Flag
+
+
+
 ## References
  - Installation (from cmake good) [link](https://www.youtube.com/watch?v=_yFPO1ofyF0&list=PLK6MXr8gasrGmIiSuVQXpfFuE1uPT615s)
  - CMake features (from CMake for dummies) [link1](https://cmake.org/cmake/help/v3.1/prop_gbl/CMAKE_CXX_KNOWN_FEATURES.html#prop_gbl:CMAKE_CXX_KNOWN_FEATURES) [link2](https://www.youtube.com/watch?v=7W4Q-XLnMaA)  
  - Adding Warnings in CMake [link1](https://cmake.org/cmake/help/latest/command/add_compile_options.html) [link2](https://stackoverflow.com/questions/2368811/how-to-set-warning-level-in-cmake/3818084) [Method3link1](https://github.com/ricab/scope_guard/issues/4) [Method3link2](https://gitlab.kitware.com/cmake/cmake/-/issues/19084) 
  - All Available CMake Variables [link1](https://stackoverflow.com/questions/9298278/cmake-print-out-all-accessible-variables-in-a-script/9328525#9328525) [link2](https://stackoverflow.com/questions/31343813/displaying-cmake-variables)
+ - Adding compile flag [link_stackoverflow](https://stackoverflow.com/questions/24238937/how-to-change-a-compiler-flag-for-just-one-executable-in-cmake)
