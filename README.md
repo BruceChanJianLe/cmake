@@ -161,6 +161,19 @@ target_link_libraries(node_class_debug ${catkin_LIBRARIES} ${CURSES_LIBRARIES})
 
 ### Adding Compile Flag
 
+Add compile flag for single source file.
+```cmake
+add_executable(MyProgram myprogram.cpp)
+
+# Add the -std=c++11 flag as an example
+set_source_files_properties( myprogram.cpp PROPERTIES COMPILE_FLAGS "-std=c++11" )
+target_link_libraries(MyProgram MyLibraries)
+```
+
+Add compile flag for multiple source files.
+```cmake
+
+```
 
 
 ## References
