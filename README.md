@@ -178,6 +178,12 @@ target_link_libraries(MyProgram MyLibraries)
 set_target_properties( MyProgram PROPERTIES COMPILE_FLAGS "-std=c++11" )
 ```
 
+Update: To remove a single property, you can first get all the properties and manually remove the offending flag from the list. [link](https://cmake.org/cmake/help/v2.8.12/cmake.html#command%3aget_source_file_property)
+```cmake
+get_source_file_property( MYPROPS myprogram.cpp COMPILE_FLAGS )
+STRING( REPLACE "/MP1" "" MYPROPS ${MYPROPS} )
+set_source_files_properties( myprogram.cpp COMPILE_FLAGS ${MYPROPS})
+```
 
 ## References
  - Installation (from cmake good) [link](https://www.youtube.com/watch?v=_yFPO1ofyF0&list=PLK6MXr8gasrGmIiSuVQXpfFuE1uPT615s)
