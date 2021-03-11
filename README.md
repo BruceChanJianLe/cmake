@@ -172,7 +172,10 @@ target_link_libraries(MyProgram MyLibraries)
 
 Add compile flag for multiple source files.
 ```cmake
-
+add_executable(MyProgram myprogram.cpp)
+# Add the -std=c++11 flag as an example
+target_link_libraries(MyProgram MyLibraries)
+set_target_properties( MyProgram PROPERTIES COMPILE_FLAGS "-std=c++11" )
 ```
 
 
