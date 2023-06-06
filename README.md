@@ -46,6 +46,11 @@ sudo update-alternatives --remove-all cmake
 
 # Set the current cmake as the default cmake
 sudo update-alternatives --install /usr/bin/cmake cmake /usr/local/bin/cmake 80
+# If you faced with this error
+# update-alternatives: using /usr/local/bin/cmake to provide /usr/bin/cmake (cmake) in auto mode
+# update-alternatives: warning: not replacing /usr/bin/cmake with a link
+# reinstall cmake
+# sudo apt-get --reinstall install cmake
 
 # Choose you cmake, if you have already remove all just now you will only have one cmake
 sudo update-alternatives --config cmake
