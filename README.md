@@ -211,5 +211,6 @@ make DESTDIR="/usr/local" install
 # Else it will cause undesirable behaviour
 ```
 
-Note: You can also use the configure file (as suggested in the ref link) if there is one, but not all has one.
-Ref: https://stackoverflow.com/questions/3239343/make-install-but-not-to-default-directories
+Note: You can also use the configure file (as suggested in the ref links) if there is one, but not all has one.
+Ref1: https://stackoverflow.com/questions/3239343/make-install-but-not-to-default-directories
+Ref2: https://www.baeldung.com/linux/change-install-dir-make-install
