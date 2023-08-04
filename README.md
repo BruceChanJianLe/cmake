@@ -8,6 +8,7 @@
 1. [Adding Compile Definitions](#Adding-Compile-Definitions)
 1. [Display All Available CMake Variables](#Display-All-Available-CMake-Variables)
 1. [Adding Compile Flag](#Adding-Compile-Flag)
+1. [Make_Install](#Make-Install)
 
 ## Installation on Linux
 
@@ -198,3 +199,17 @@ set_source_files_properties( myprogram.cpp COMPILE_FLAGS ${MYPROPS})
  - Adding compile flag [link_stackoverflow](https://stackoverflow.com/questions/24238937/how-to-change-a-compiler-flag-for-just-one-executable-in-cmake)
  - Better CMake [link](https://www.youtube.com/playlist?list=PL8i3OhJb4FNV10aIZ8oF0AA46HgA2ed8g)
  - Talk on CMake [link](https://www.youtube.com/watch?v=bsXLMQ6WgIk&ab_channel=CppNow)
+
+### Make Install
+
+As we all know that libraries that are not managed by apt should go to `/usr/local` therefore let's do it with `make install`
+
+```bash
+# Preferrably using the DESTDIR method
+make DESTDIR="/usr/local" install
+# Alternatively, you can export DESTDIR, however, you will need to remember to clean it later.
+# Else it will cause undesirable behaviour
+```
+
+Note: You can also use the configure file (as suggested in the ref link) if there is one, but not all has one.
+Ref: https://stackoverflow.com/questions/3239343/make-install-but-not-to-default-directories
