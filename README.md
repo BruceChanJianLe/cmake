@@ -8,6 +8,7 @@
 1. [Adding Compile Definitions](#Adding-Compile-Definitions)
 1. [Display All Available CMake Variables](#Display-All-Available-CMake-Variables)
 1. [Adding Compile Flag](#Adding-Compile-Flag)
+1. [Ctest Labels](#Ctest-Labels)
 1. [Make_Install](#Make-Install)
 
 ## Installation on Linux
@@ -190,6 +191,35 @@ get_source_file_property( MYPROPS myprogram.cpp COMPILE_FLAGS )
 STRING( REPLACE "/MP1" "" MYPROPS ${MYPROPS} )
 set_source_files_properties( myprogram.cpp COMPILE_FLAGS ${MYPROPS})
 ```
+
+### Ctest Labels
+
+Example taken from (https://github.com/BruceChanJianLe/data-structures-and-algorithms/blob/cpp/test/CMakeLists.txt)
+```cmake
+# Remember to include(Ctest) in root CMakeLists.txt
+# Link list raw test
+include_directories(${CMAKE_SOURCE_DIR}/link_list/include)
+add_executable(link_list_raw_test
+  ./link_list_raw_test.cpp
+)
+target_link_libraries(link_list_raw_test
+  GTest::gtest_main
+  link_list_raw
+)
+
+# Discover tests
+include(GoogleTest)
+# gtest_discover_tests(
+#   link_list_raw_test
+# )
+add_test(
+  NAME link_list_raw_test
+  COMMAND link_list_raw_test
+)
+set_tests_properties(link_list_raw_test PROPERTIES LABELS "link_list")
+```
+
+Ref: https://stackoverflow.com/questions/24495412/ctest-using-labels-for-different-tests-ctesttestfile-cmake
 
 ## References
  - Installation (from cmake good) [link](https://www.youtube.com/watch?v=_yFPO1ofyF0&list=PLK6MXr8gasrGmIiSuVQXpfFuE1uPT615s)
