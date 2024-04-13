@@ -9,8 +9,8 @@
 1. [Display All Available CMake Variables](#Display-All-Available-CMake-Variables)
 1. [Adding Compile Flag](#Adding-Compile-Flag)
 1. [Ctest Labels](#Ctest-Labels)
-1. [Make_Install](#Make-Install)
-1. [Fetch_Content](#Fetch_Content)
+1. [Make Install](#Make-Install)
+1. [Fetch Content](#Fetch-Content)
 
 ## Installation on Linux
 
