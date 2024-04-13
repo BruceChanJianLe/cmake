@@ -10,6 +10,7 @@
 1. [Adding Compile Flag](#Adding-Compile-Flag)
 1. [Ctest Labels](#Ctest-Labels)
 1. [Make_Install](#Make-Install)
+1. [Fetch_Content](#Fetch_Content)
 
 ## Installation on Linux
 
@@ -244,3 +245,77 @@ make DESTDIR="/usr/local" install
 Note: You can also use the configure file (as suggested in the ref links) if there is one, but not all has one.
 Ref1: https://stackoverflow.com/questions/3239343/make-install-but-not-to-default-directories
 Ref2: https://www.baeldung.com/linux/change-install-dir-make-install
+
+### Fetch Content
+
+There are couples of ways to perform content fetching,
+one is to make it available in your project (as dynamic library).
+Another is to only include it (but you can compile to your own dynamic library).
+Both methods allow you to link you code against it.
+
+Method 1
+
+```cmake
+# https://cmake.org/cmake/help/latest/module/FetchContent.html
+include(FetchContent)
+
+# -- Fetch fmt
+FetchContent_Declare(fmt URL https://github.com/fmtlib/fmt/archive/refs/tags/10.2.1.zip)
+FetchContent_MakeAvailable(fmt)
+```
+
+Method 2
+```cmake
+# Refer: https://github.com/BruceChanJianLe/imgui-examples/blob/master/CMakeLists.txt
+# -- Fetch IMGUI
+include(FetchContent)
+
+function(fetch_project)
+  cmake_parse_arguments(FETCH_SOURCE "" "NAME;URL;DESTINATION" "" ${ARGN})
+
+  FetchContent_Populate(${FETCH_SOURCE_NAME}
+    URL ${FETCH_SOURCE_URL}
+    SOURCE_DIR ${CMAKE_BINARY_DIR}/${FETCH_SOURCE_DESTINATION}
+  )
+
+  set(
+    "${FETCH_SOURCE_NAME}_LOCATION"
+    ${CMAKE_BINARY_DIR}/${FETCH_SOURCE_DESTINATION}
+    PARENT_SCOPE
+  )
+endfunction()
+
+fetch_project(
+  NAME imgui_src
+  URL https://github.com/ocornut/imgui/archive/refs/tags/v1.90.zip
+  DESTINATION imgui
+)
+
+set(OpenGL_GL_PREFERENCE "LEGACY")
+find_package(OpenGL 3 REQUIRED)
+find_package(glfw3 REQUIRED)
+
+add_library(imgui_glfw SHARED
+  ${imgui_src_LOCATION}/imgui.cpp
+  ${imgui_src_LOCATION}/imgui_draw.cpp
+  ${imgui_src_LOCATION}/imgui_demo.cpp
+  ${imgui_src_LOCATION}/imgui_tables.cpp
+  ${imgui_src_LOCATION}/imgui_widgets.cpp
+
+  ${imgui_src_LOCATION}/backends/imgui_impl_glfw.cpp
+  ${imgui_src_LOCATION}/backends/imgui_impl_opengl3.cpp
+
+  ${imgui_src_LOCATION}/misc/cpp/imgui_stdlib.cpp
+)
+
+target_link_libraries(imgui_glfw PUBLIC glfw OpenGL::GL)
+target_compile_definitions(imgui_glfw PUBLIC IMGUI_IMPL_OPENGL_LOADER_GLAD)
+
+target_include_directories(imgui_glfw
+PUBLIC
+  ${imgui_src_LOCATION}
+  ${imgui_src_LOCATION}/backends
+  ${imgui_src_LOCATION}/misc/cpp
+)
+# ---
+```
