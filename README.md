@@ -11,6 +11,7 @@
 1. [Ctest Labels](#Ctest-Labels)
 1. [Make Install](#Make-Install)
 1. [Fetch Content](#Fetch-Content)
+1. [CMake Find Package CLI](#CMake-Find-Package-CLI)
 
 ## Installation on Linux
 
@@ -318,4 +319,12 @@ PUBLIC
   ${imgui_src_LOCATION}/misc/cpp
 )
 # ---
+```
+
+### CMake Find Package CLI
+
+A simple way to verify whether a package can be found by cmake find_package function.
+```bash
+# Example of looking for boost
+cmake --find-package -DNAME=Boost -DCOMPILER_ID=GNU -DLANGUAGE=CXX -DMODE=EXIST
 ```
