@@ -254,6 +254,9 @@ one is to make it available in your project (as dynamic library).
 Another is to only include it (but you can compile to your own dynamic library).
 Both methods allow you to link you code against it.
 
+There is another function called 'ExternalProject_Add' which is for super build project.
+Read more about the difference [here](https://discourse.cmake.org/t/relationship-between-fetchcontent-and-externalproject/10162/8).
+
 Method 1
 
 ```cmake
