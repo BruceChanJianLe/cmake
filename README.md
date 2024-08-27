@@ -12,6 +12,7 @@
 1. [Make Install](#Make-Install)
 1. [Fetch Content](#Fetch-Content)
 1. [CMake Find Package CLI](#CMake-Find-Package-CLI)
+1. [Generate Compile Command with Empty CMake](#Generate-Compile-Command-with-Empty-CMake)
 
 ## Installation on Linux
 
@@ -330,4 +331,24 @@ A simple way to verify whether a package can be found by cmake find_package func
 ```bash
 # Example of looking for boost
 cmake --find-package -DNAME=Boost -DCOMPILER_ID=GNU -DLANGUAGE=CXX -DMODE=EXIST
+```
+
+### Generate Compile Command with Empty CMake
+
+This is a way to generate compile commands with an empty cmake to trigger LSP to work.
+For example, when using leetcode.nvim plugin.
+
+```cmake
+cmake_minimum_required (VERSION 3.10)
+project(leetcode_cpp)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Dummy target to force generation of compile_commands.json
+add_custom_target(dummy_target ALL
+    COMMAND ${CMAKE_COMMAND} -E echo "Generating compile_commands.json"
+    COMMENT "Creating a dummy target to generate compile_commands.json"
+)
 ```
