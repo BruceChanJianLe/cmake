@@ -346,9 +346,22 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+# Dummy target
+add_executable(dummy dummy.cpp)
+
 # Dummy target to force generation of compile_commands.json
-add_custom_target(dummy_target ALL
-    COMMAND ${CMAKE_COMMAND} -E echo "Generating compile_commands.json"
-    COMMENT "Creating a dummy target to generate compile_commands.json"
+#add_custom_target(dummy_target ALL
+#    COMMAND ${CMAKE_COMMAND} -E echo "Generating compile_commands.json"
+#    COMMENT "Creating a dummy target to generate compile_commands.json"
 )
+```
+
+dummy.cpp
+```cpp
+#include <cstdlib>
+
+int main (int argc, char *argv[])
+{
+  return EXIT_SUCCESS;
+}
 ```
