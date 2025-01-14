@@ -325,6 +325,8 @@ PUBLIC
 # ---
 ```
 
+Best practice discussion, a good read: https://discourse.cmake.org/t/best-practice-s-for-isolating-dependencies-pulled-with-fetchcontent/5773
+
 ### CMake Find Package CLI
 
 A simple way to verify whether a package can be found by cmake find_package function.
